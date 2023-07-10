@@ -52,10 +52,13 @@ const CircleSlider: FC<Props> = ({
 
                 if (a <= min) {
                     setAngle(min);
+                    onValueChange(min);
                 } else if (a >= max) {
                     setAngle(max);
+                    onValueChange(max);
                 } else {
                     setAngle(a);
+                    onValueChange(a);
                 }
             },
         }),
