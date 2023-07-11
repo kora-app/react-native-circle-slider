@@ -1,6 +1,7 @@
-import {Dimensions, PanResponder} from 'react-native';
+import {Dimensions, PanResponder, Platform} from 'react-native';
 import React, {FC, useCallback, useRef, useState} from 'react';
 import Svg, {Circle, G, Path} from 'react-native-svg';
+import {debounce} from 'lodash';
 
 interface Props {
  btnRadius?: number;
@@ -39,6 +40,14 @@ const CircleSlider: FC<Props> = ({
 }) => {
     const [angle, setAngle] = useState(value);
 
+    const handleValueChange = (value: number) => {
+        if (Platform.OS === 'ios') {
+            onValueChange(value);
+        } else {
+            debounce(onValueChange, 50);
+        }
+    };
+
     const panResponder = useRef(
         PanResponder.create({
             onStartShouldSetPanResponder: (e, gs) => true,
@@ -52,13 +61,13 @@ const CircleSlider: FC<Props> = ({
 
                 if (a <= min) {
                     setAngle(min);
-                    onValueChange(min);
+                    handleValueChange(min);
                 } else if (a >= max) {
                     setAngle(max);
-                    onValueChange(max);
+                    handleValueChange(max);
                 } else {
                     setAngle(a);
-                    onValueChange(a);
+                    handleValueChange(a);
                 }
             },
         }),
