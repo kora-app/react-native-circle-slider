@@ -132,15 +132,6 @@ const CircleSlider: FC<Props> = ({
 
                 <G>
                     <Circle r={bR} cx={bR} cy={bR} fill="#FFF" {...panResponder.panHandlers} />
-
-                    <Path
-                        d="M 0 -2 L -5 3 L 0 7" // Path data https://yqnn.github.io/svg-path-editor/
-                        fill="none"
-                        stroke={textColor}
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        transform={`translate(${bR}, ${bR - 2})`}
-                    />
                 </G>
             </G>
         </Svg>
