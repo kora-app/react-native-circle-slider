@@ -41,11 +41,7 @@ const CircleSlider: FC<Props> = ({
     const [angle, setAngle] = useState(value);
 
     const handleValueChange = (value: number) => {
-        // if (Platform.OS === 'ios') {
-        //     onValueChange(value);
-        // } else {
-        //     debounce(onValueChange, 50);
-        // }
+
         onValueChange(value);
     };
 
