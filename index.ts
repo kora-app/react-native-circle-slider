@@ -1,3 +1,3 @@
-import CircleSlider from "./CircleSlider";
+import CircleSlider from './CircleSlider';
 
 export default CircleSlider;
